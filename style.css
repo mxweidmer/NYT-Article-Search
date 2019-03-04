@@ -1,5 +1,5 @@
 #jumbo{
-    background-color: darkblue;
+    background-color: #34495E;
     color: white;
     font-weight: bold;
     font-size: 30px;
@@ -7,8 +7,14 @@
 
 #queries{
     background-color: lightgray;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
 }
 
 #head-2{
     background-color: lightgray;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
 }
