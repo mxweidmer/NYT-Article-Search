@@ -1,0 +1,5 @@
+article title response.docs[i].headline.main
+article author response.docs[i].byline.original
+section response.docs[i].section_name
+date response.docs[i].pub_date
+article link response.docs[i].web_url
