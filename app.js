@@ -1,5 +1,3 @@
-
-
 var startYear;
 var endYear;
 
@@ -31,7 +29,7 @@ $("#search").on("click", function () {
 
     recordNum = parseInt($('#inputGroupSelect01 option:selected').val());
 
-    queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTerm + beginDate + endDate + "&api-key=5rQbNRg31B5QOgvxIM8sjGNjQvsAIizt";
+    queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTerm + beginDate + endDate + "&sort=relevance&api-key=5rQbNRg31B5QOgvxIM8sjGNjQvsAIizt";
 
     $.ajax({
         url: queryURL,
@@ -45,19 +43,33 @@ $("#search").on("click", function () {
         for (var i = 0; i < recordNum; i++) {
             var articleTitle = results[i].headline.main;
             var articleAuthor = results[i].byline.original;
-            var section = results[i].section_name;
-            var date = results[i].pub_date;
+            var sectionResult = results[i].section_name;
+            var dateResult = results[i].pub_date;
             var articleLink = results[i].web_url;
 
-            console.log(articleTitle);
-            console.log(articleAuthor);
-            console.log(section);
-            console.log(date);
-            console.log(articleLink);
+            var article = $("<div>");
+
+            var title = $("<h5>").text(results[i].headline.main);
+
+            var author = $("<h6>").text(results[i].byline.original);
+
+            var section = $("<p>").text(results[i].section_name);
+
+            var date = $("<p>").text(results[i].pub_date);
+
+            var link = $("<a>");
+            link.attr("href", results[i].web_url);
+            link.html(results[i].web_url + "<hr>");
+
+            article.append(title, author, section, date, link);
+
+            $("#results").prepend(article);
+
         }
 
     });
 });
 
 $("#clear").on("click", function () {
+    $("#results").empty();
 });
