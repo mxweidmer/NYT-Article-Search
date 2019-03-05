@@ -36,25 +36,15 @@ $("#search").on("click", function () {
         method: "GET"
     }).then(function (response) {
 
-        console.log(queryURL);
-
         var results = response.response.docs;
 
         for (var i = 0; i < recordNum; i++) {
-            var articleTitle = results[i].headline.main;
-            var articleAuthor = results[i].byline.original;
-            var sectionResult = results[i].section_name;
-            var dateResult = results[i].pub_date;
-            var articleLink = results[i].web_url;
 
             var article = $("<div>");
 
             var title = $("<h5>").text(results[i].headline.main);
-
             var author = $("<h6>").text(results[i].byline.original);
-
             var section = $("<p>").text(results[i].section_name);
-
             var date = $("<p>").text(results[i].pub_date);
 
             var link = $("<a>");
@@ -64,9 +54,7 @@ $("#search").on("click", function () {
             article.append(title, author, section, date, link);
 
             $("#results").prepend(article);
-
         }
-
     });
 });
 
